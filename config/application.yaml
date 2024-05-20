@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: test-task-ov
+  jpa:
+    show-sql: true
+    open-in-view: true
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book
+    username: user
+    password: user
+    hikari:
+      minimum-idle: 3
+      idle-timeout: 0
+      maximum-pool-size: 15
+      pool-name: pool-${spring.application.name}
+      max-lifetime: 1800000
+
+server:
+  http2:
+    enabled: true
+  port: 8080
+  servlet:
+    context-path: /${spring.application.name}
